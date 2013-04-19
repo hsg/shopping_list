@@ -125,6 +125,7 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0.25em 0.5em;
+  font-size: 1.5em;
   border: 1px solid #e6e6e6;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(0.15, #fafafa));
   background: -webkit-linear-gradient(top, #f3f3f3 0%, #fafafa 15%);
@@ -132,6 +133,9 @@ textarea {
   background: -o-linear-gradient(top, #f3f3f3 0%, #fafafa 15%);
   background: -ms-linear-gradient(top, #f3f3f3 0%, #fafafa 15%);
   background: linear-gradient(top, #f3f3f3 0%, #fafafa 15%);
+}
+select {
+  font-size: 1.5em;
 }
 input[type="checkbox"] {
   -khtml-appearance: none;
@@ -143,6 +147,7 @@ input[type="checkbox"] {
   box-shadow: 0 0 1px 1px rgba(255,255,255,0.6);
   cursor: pointer;
   font-size: 24px !important;
+  vertical-align: middle;
   padding: 2px;
   height: 28px;
   width: 28px;
@@ -187,6 +192,7 @@ input[type="radio"] {
   box-shadow: 0 0 1px 1px rgba(255,255,255,0.6);
   cursor: pointer;
   font-size: 24px !important;
+  vertical-align: middle;
   -webkit-border-radius: 32px;
   border-radius: 32px;
   height: 32px;
@@ -231,8 +237,10 @@ input[type="submit"] {
   border: none;
   margin: 0;
   padding: 0.25em 1em;
+  font-size: 1.5em;
   line-height: 1em;
   cursor: pointer;
+  font-family: 'Proxima';
   background: #adadad;
 }
 a.button,
@@ -356,13 +364,17 @@ body > article {
 body > article > form {
   position: relative;
 }
-body > article > form input {
+body > article > form .input-wrapper {
+  position: relative;
+}
+body > article > form input.add-item,
+body > article > form .input-wrapper input {
   width: 100%;
-  font-size: 1.5em !important;
   margin: 0;
   padding-right: 1.5em;
 }
-body > article > form input + button {
+body > article > form input.add-item + button,
+body > article > form .input-wrapper input + button {
   position: absolute;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -371,7 +383,6 @@ body > article > form input + button {
   right: 0;
   bottom: 0;
   margin: 0;
-  font-size: 1.5em;
   min-width: 1.7em;
   padding: 0.25em;
 }
