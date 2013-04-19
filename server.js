@@ -1,6 +1,7 @@
 var express  = require('express');
 var http     = require('http');
 var fs       = require('fs');
+var stylus   = require('stylus');
 var app      = express();
 
 app.configure(function() {
@@ -13,12 +14,23 @@ app.configure(function() {
 });
 
 app.get('*', function(req, res) {
-	var path = req.params[0].replace(/^\//, '').replace(/\.html$/, '.jade') || 'index.jade';
-	if (fs.existsSync(app.get('views') + '/' + path)) {
+
+	var path = req.params[0].replace(/^\//, '') || 'index.html';
+
+	if (/.css$/.test(path)) {
+		path = 'client/' + path.replace(/\.css$/, '.styl');
+		var str = fs.readFileSync(path, 'utf8');
+		stylus(str).set('filename', path).include(require('nib').path).render(function(err, data) {
+			if (err) throw err;
+			res.set('Content-Type', 'text/css');
+			res.send(data);
+			// fs.writeFileSync(path.replace(/\.styl$/, '.css'), data);
+		});
+	} else if (/.html$/.test(path)) {
+		path = path.replace(/\.html$/, '.jade');
 		res.render(path);
-	} else {
-		res.send(404);
 	}
+
 });
 
 http.createServer(app).listen(app.get('port'), function() {

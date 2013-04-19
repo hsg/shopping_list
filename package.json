@@ -7,7 +7,14 @@
 		"npm": "1.2.x"
 	},
 	"dependencies": {
-		"express" : "latest",
-		"jade"    : "latest"
+		"express"        : "latest",
+		"jade"           : "latest",
+		"stylus"         : "latest",
+		"nib"            : "latest",
+		"underscore"     : "latest"
+	},
+	"devDependencies": {
+		"glob"           : "latest",
+		"fs-extra"       : "latest"
 	}
 }

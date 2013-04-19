@@ -1,0 +1,154 @@
+// Reset
+@import "nib"
+global-reset()
+reset-html5()
+
+@import _base
+
+// Inputs etc
+input:not([type="checkbox"]):not([type="submit"]), textarea
+  box-sizing border-box
+  padding .25em .5em
+  border 1px solid darken(extremely-light-gray, 5)
+  background linear-gradient(top, extremely-light-gray, darken(white, 2) 15%)
+
+// Checkbox, radio buttom
+input[type="checkbox"]
+  checkbox-button()
+input[type="radio"]
+  checkbox-button(true)
+
+// Buttons
+a.button, button, input[type="submit"]
+  display inline-block
+  text-decoration none
+  border none
+  margin 0
+  padding .25em 1em
+  line-height 1em
+  cursor pointer
+
+  &, &:visited
+    color white
+
+  button-background(light-gray)
+
+  &.remove, &.delete
+    button-background(red)
+
+a.button.action, input[type="submit"], input[type="button"], button.action
+  button-background(orange)
+
+// Layout
+html, body
+  background light-cream
+body
+
+  header, footer
+    text-align center
+    font-family 'Nexa-Light'
+
+  header
+    padding 1.25em 3em 1em
+    background orange
+    border-bottom 1px solid lighten(orange, 80%)
+    h1, span
+      color white
+      font-size 2.5em
+  footer
+    padding 2em 1em 2.5em
+    font-size .6em
+    color light-gray
+    overflow hidden
+
+body > article
+  margin 1em
+
+  & > form
+    position relative
+    input
+      width 100%
+      font-size 1.5em !important
+      margin 0
+      padding-right 1.5em
+      & + button
+        position absolute
+        box-sizing border-box
+        top 0
+        right 0
+        bottom 0
+        margin 0
+        font-size 1.5em
+        min-width 1.7em
+        padding .25em
+
+  ul
+    margin-top 1em
+    li
+      padding .7em 1em .25em
+      position relative
+      border 1px solid extremely-light-gray
+      border-top 0 none
+      font-family 'Proxima'
+      background white
+
+      // cursor pointer
+
+      &:first-child
+        border-top 1px solid extremely-light-gray
+
+      input[type="checkbox"]
+        position absolute
+        top .125em
+        left 0
+
+        & + span
+          margin-left 1.5em
+
+      button
+        display none
+        position absolute
+        box-sizing border-box
+        top 0
+        right 0
+        margin 0
+        bottom 0
+        font-size 1.5em
+        min-width 1.7em
+        padding .25em
+
+      &:hover button
+        display block
+
+      & > span
+        font-size 1.25em
+        line-height 1.25em
+        color gray
+
+        & > strong, & > span.title
+          display inline-block
+          max-width 50%
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
+
+      span.amount
+        float right
+        margin-right 2em
+        text-align right
+        strong, span.amount
+          font-size 1.25em
+          margin-right .25em
+          font-weight normal
+          color cyan
+        span.unit
+          display inline-block
+          overflow hidden
+          text-overflow ellipsis
+          width 3.5em
+          color light-gray
+          text-align left
+
+  @media tablet-horizontal-min
+    margin 1em auto
+    width display-tablet-horizontal
