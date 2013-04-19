@@ -21,10 +21,6 @@ angular.module('Shoppinglist', [])
 			} else {
 				item.title = data.text;
 			}
-<<<<<<< HEAD
-=======
-			console.log(item);
->>>>>>> b5e43488b09fc334e87374ea60d01a05765fa5ef
 			$scope.items.push(item);
 			$scope.newItem = {
 				text: ''
